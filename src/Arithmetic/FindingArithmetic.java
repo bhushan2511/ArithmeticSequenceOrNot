@@ -9,11 +9,12 @@ public class FindingArithmetic {
 	{
 		int max=0;
 		int min=0;
-		int arithmeticMean=0;
+		int summation=0;
+		int sumThruFormula=0;
 		HashSet<Integer> numSet= new HashSet<Integer> ();
 		
 		
-		//O(n) complexity
+		//O(n) complexity, if i assume that there is not duplicate then I can skip this step
 		for(int num:a)
 		{
 			//I used hashset because in case of duplicate elements in the array it will return false
@@ -24,19 +25,18 @@ public class FindingArithmetic {
 			else
 			{
 				numSet.add(num);
+				summation+=num;
 			}
 		}
 		
 	    max = Collections.max(numSet);
 	    min = Collections.min(numSet);
-	    arithmeticMean=(max-min)/(a.length-1);
+	    sumThruFormula=((max+min)*(a.length))/2;
 	    
 	    
 	    //O(n) complexity
-	    for(int num:a)
+	    if(summation!=sumThruFormula)
 	    {
-	    	int divisorOf = (num -1) % arithmeticMean;
-	    	if(divisorOf!=0)
 	    		return false;	    	
 	    }
 	    
